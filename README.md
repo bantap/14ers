@@ -1,7 +1,7 @@
 # Colorado 14ers
-->Paul Banta<-
-->MSSA CAD 18-Week Project<-
-December, 2020
+<center>Paul Banta</center>
+<center>MSSA CAD 18-Week Project</center>
+<center>December, 2020</center>
 ---
 Paul Banta
 MSSA CAD
