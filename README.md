@@ -2,14 +2,14 @@
 ### Paul Banta
 ### MSSA CAD 18-Week Project
 ### December, 2020
-<hr>
+#
+
 Colorado residents tend to enjoy outdoor activities.
 The Rocky Mountains provide a beautiful venue for Boating, Camping, Fishing, Hiking, and many other outdoor activities.
 
-
 The Colorado Rocky Mountains contain 58 different peaks that are 14,000 feet high or more.
 These are locally referred to as "14ers".
-The most famous of these is Pikes Peak at 14,115 feet high and located just west of Colorado Springs.
+The most famous of these is Pikes Peak at 14,115 feet high located just west of Colorado Springs.
 Many of these peaks have trails to the top.
 One popular outdoor activity in the state is to "hike a 14er".
 
