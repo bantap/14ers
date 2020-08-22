@@ -1,20 +1,8 @@
 # Colorado 14ers
-<center>Paul Banta</center>
-<center>MSSA CAD 18-Week Project</center>
-<center>December, 2020</center>
----
-Paul Banta
-MSSA CAD
-Aug 22, 2020
-
-
-Project Step 2
-Project Selection
-https://docs.google.com/document/d/17wNrTiPX8WdUF452bKSr7iSwJtL_QoBQ0ciwRfK-8Pg
-
-
-Colorado 14ers
-
+### Paul Banta
+### MSSA CAD 18-Week Project
+### December, 2020
+<hr>
 Colorado residents tend to enjoy outdoor activities. The Rocky Mountains provide a beautiful venue for Boating, Camping, Fishing, Hiking, and many other outdoor activities.
 
 The Colorado Rocky Mountains contain 58 different peaks that are 14,000 feet high or more. These are locally referred to as "14ers". The most famous of these is Pikes Peak at 14,115 feet high and located just west of Colorado Springs. Many of these peaks have trails to the top. A popular outdoor activity in the state is to "hike a 14er".
@@ -24,19 +12,19 @@ A few years ago, in 2014, there was a campaign or a challenge in the state for p
 This application will allow users to keep track of which 14ers they have summitted.
 
 Users will be allowed to create an account at this website (register). Once registered and logged in, the main functionality will allow users to enter each peak they have summitted. Each entry will include a number of pieces of information, including:
-Date Summitted (required)
-Which Peak (required, from a pre-populated list)
-Which Trail (optional, default value based on peak)
-Distance (optional, default value based on peak and/or trail)
-Starting Elevation (required, modifiable, default value based on peak and/or trail)
-Elevation (required, no modification, based on peak)
-Start Time (optional)
-Summit Time (optional)
-Finish Time (optional)
-Trail Condition (optional)
-Weather Condition (optional)
-Difficulty Level (1 - 5, optional)
-Notes (free-form text, optional)
+* Date Summitted (required)
+* Which Peak (required, from a pre-populated list)
+* Which Trail (optional, default value based on peak)
+* Distance (optional, default value based on peak and/or trail)
+* Starting Elevation (required, modifiable, default value based on peak and/or trail)
+* Elevation (required, no modification, based on peak)
+* Start Time (optional)
+* Summit Time (optional)
+* Finish Time (optional)
+* Trail Condition (optional)
+* Weather Condition (optional)
+* Difficulty Level (1 - 5, optional)
+* Notes (free-form text, optional)
 
 Users will be allowed to create an entry for each and every peak that they have summitted. This will include allowing users to summit the same peak multiple times.
 
@@ -51,5 +39,3 @@ Users will also be able to organize groups of hikers for future hikes. If a user
 A few users will be allowed to be administrators. These users will be allowed to maintain the list of peaks and trails. These users will also be allowed to view all users "shared" information (trail conditions, weather conditions, and notes). In the event that "shared" information is inappropriate, an admin user will be allowed to either delete the offensive material or even disable an account.
 
 Reference: www.14ers.com
-
-
