@@ -4,7 +4,7 @@
 ### December, 2020
 #
 
-* [Database Design](DatabaseDesign.pdf)
+* [Database Design](14ersDatabaseDesign.pdf)
 
 Colorado residents tend to enjoy outdoor activities.
 The Rocky Mountains provide a beautiful venue for Boating, Camping, Fishing, Hiking, and many other outdoor activities.
