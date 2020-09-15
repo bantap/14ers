@@ -64,13 +64,13 @@ INSERT
       ('Box Creek Couloirs',  8.5,  10400, 1),
       ('North Slope',         7.5,  10280, 2),
       ('American Basin',      5.5,  11600, 3),
-	  ('Barr Trail',         24,     6650, 4),
+      ('Barr Trail',         24,     6650, 4),
       ('Crags',              14,    10000, 4),
       ('Quandry',             6.75, 10850, 5),
-	  ('Stewart Creek',      13.5,  10500, 6),
+      ('Stewart Creek',      13.5,  10500, 6),
       ('West Willow Creek',  11.25, 10500, 6);
 
 SELECT *, Peak.elevation - Trail.startingAltitude AS altitudeGain
    FROM Trail
       INNER JOIN Peak
-	     ON Trail.peakId = Peak.id;
+         ON Trail.peakId = Peak.id;
