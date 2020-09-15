@@ -23,6 +23,7 @@ CREATE TABLE Peak
    county      NVARCHAR(20) NOT NULL
 );
 
+-- Test Data
 INSERT
    INTO Peak
       (name, elevation, nearestTown, county)
@@ -54,6 +55,7 @@ CREATE TABLE Trail
       REFERENCES Peak(id),
 );
 
+-- Test Data
 INSERT
    INTO Trail
       (name, distance, startingAltitude, peakId)
