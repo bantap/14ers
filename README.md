@@ -6,6 +6,7 @@
 
 * [Database Design](14ersDatabaseDiagram.pdf)
 * [Database Implementation](14ersDb.sql)
+* [WireFrame](14ers.pdf)
 
 Colorado residents tend to enjoy outdoor activities.
 The Rocky Mountains provide a beautiful venue for Boating, Camping, Fishing, Hiking, and many other outdoor activities.
