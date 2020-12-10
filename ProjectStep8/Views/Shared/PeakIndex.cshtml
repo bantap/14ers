@@ -1,0 +1,49 @@
+﻿@model IQueryable<Peak>
+@inject IUserRepository UserRepository
+
+<fieldset>
+   <table>
+      <thead>
+         <tr>
+            <th class="text-center" colspan="3"> <h2> List Of All Peaks </h2> </th>
+         </tr>
+         <tr>
+            <td colspan="3"> <hr /> </td>
+         </tr>
+         <tr>
+            <th class="text-center"> Peak      </th>
+            <th class="text-center"> Elevation </th>
+            <th class="text-center"> Actions   </th>
+         </tr>
+      </thead>
+
+      <tbody>
+         @foreach (Peak p in Model)
+         {
+            <tr>
+               <td> @p.Name                     </td>
+               <td> @p.Elevation.ToString("N0") </td>
+               <td>
+                  <a asp-controller="Peak" asp-action="Detail" asp-route-peakId="@p.Id" class="btn-sm btn-info m-1" title="Peak Details"> Details </a>
+                  @if (UserRepository.IsUserAdmin())
+                  {
+                     <a asp-controller="Peak" asp-action="Edit"   asp-route-peakId="@p.Id" class="btn-sm btn-warning m-1" title="Edit Peak"  > Edit   </a>
+                     <a asp-controller="Peak" asp-action="Delete" asp-route-peakId="@p.Id" class="btn-sm btn-danger m-1"  title="Delete Peak"> Delete </a>
+                  }
+               </td>
+            </tr>
+         }
+         @if (UserRepository.IsUserAdmin())
+         {
+            <tr>
+               <td colspan="3"> <hr /> </td>
+            </tr>
+            <tr>
+               <td class="text-center" colspan="3">
+                  <a asp-action="Add" class="btn-sm btn-primary m-1"> Add A New Peak </a>
+               </td>
+            </tr>
+         }
+      </tbody>
+   </table>
+</fieldset>
