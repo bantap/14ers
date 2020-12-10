@@ -27,20 +27,22 @@ namespace ProjectStep8.Controllers
       [HttpGet]
       public IActionResult Add()
       {
-         bool isUserLoggedIn = _userRepository.IsUserLoggedIn();
-         if (isUserLoggedIn == true)
-         {
-            return View();
-         }
-         else
+         if (!_userRepository.IsUserAdmin())
          {
             return RedirectToAction("Index");
          }
+
+         return View();
       } // end Add( )
 
       [HttpPost]
       public IActionResult Add(Peak p)
       {
+         if (!_userRepository.IsUserAdmin())
+         {
+            return RedirectToAction("Index");
+         }
+
          if (ModelState.IsValid)
          {
             _repository.AddPeak(p);
@@ -70,13 +72,28 @@ namespace ProjectStep8.Controllers
       [HttpGet]
       public IActionResult Edit(int peakId)
       {
+         if (!_userRepository.IsUserAdmin())
+         {
+            return RedirectToAction("Index");
+         }
+
          Peak p = _repository.GetPeakById(peakId);
-         return View(p);
+         if (p != null)
+         {
+            return View(p);
+         }
+
+         return RedirectToAction("Index");
       }
 
       [HttpPost]
       public IActionResult Edit(Peak p)
       {
+         if (!_userRepository.IsUserAdmin())
+         {
+            return RedirectToAction("Index");
+         }
+
          if (ModelState.IsValid)
          {
             _repository.UpdatePeak(p);
@@ -91,12 +108,22 @@ namespace ProjectStep8.Controllers
       [HttpGet]
       public IActionResult Delete(int peakId)
       {
+         if (!_userRepository.IsUserAdmin())
+         {
+            return RedirectToAction("Index");
+         }
+
          return View(_repository.GetPeakById(peakId));
       } // end DeletePeak( )
 
       [HttpPost]
       public IActionResult Delete(Peak p)
       {
+         if (!_userRepository.IsUserAdmin())
+         {
+            return RedirectToAction("Index");
+         }
+
          _repository.DeletePeak(p.Id);
          return RedirectToAction("Index");
       } // end DeletePeak( )

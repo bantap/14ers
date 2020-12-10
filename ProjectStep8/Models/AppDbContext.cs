@@ -32,6 +32,26 @@ namespace ProjectStep8.Models
                      .HasIndex(u => u.Email)
                      .IsUnique();
 
+         //   P B a n t a 1 0 1   /   W o m b a t 1
+
+         modelBuilder.Entity<User>().HasData
+            (new User
+            {
+               Id = 1,
+               Email = "PBanta101@GMail.Com",
+               Password = "479ed019aea4c1769a39d5ed0e79b7ca943486e2d15b937b0ff1725b2aed09b3",
+               IsAdmin = true
+            });
+
+         modelBuilder.Entity<User>().HasData
+            (new User
+            {
+               Id = 2,
+               Email = "PBanta101@Example.Com",
+               Password = "479ed019aea4c1769a39d5ed0e79b7ca943486e2d15b937b0ff1725b2aed09b3",
+               IsAdmin = false
+            });
+
          //   P i k e s   P e a k
 
          modelBuilder.Entity<Peak>().HasData

@@ -1,51 +1,46 @@
 ﻿@model Peak
 
-<table>
-   <thead>
-      <tr>
-         <td class="text-center" colspan="2">
-            <h2> Delete Peak </h2>
-         </td>
-      </tr>
-      <tr>
-         <td colspan="2"> <hr /> </td>
-      </tr>
-   </thead>
+<fieldset class="border custom-control-inline p-2 shadow align-top mb-4">
+   <legend>
+      Delete Peak
+   </legend>
 
-   <tbody>
-      <tr>
-         <th class="text-right"> Name: </th>
-         <td> @Model.Name </td>
-      </tr>
-      <tr>
-         <th class="text-right"> Elevation: </th>
-         <td> @Model.Elevation.ToString("N0") </td>
-      </tr>
-      <tr>
-         <th class="text-right"> Nearest Town: </th>
-         <td> @Model.NearestTown </td>
-      </tr>
-      <tr>
-         <th class="text-right"> County: </th>
-         <td> @Model.County </td>
-      </tr>
-   </tbody>
+   <table>
+      <tbody>
+         <tr>
+            <th class="text-right"> Name: </th>
+            <td> @Model.Name </td>
+         </tr>
+         <tr>
+            <th class="text-right"> Elevation: </th>
+            <td> @Model.Elevation.ToString("N0") </td>
+         </tr>
+         <tr>
+            <th class="text-right"> Nearest Town: </th>
+            <td> @Model.NearestTown </td>
+         </tr>
+         <tr>
+            <th class="text-right"> County: </th>
+            <td> @Model.County </td>
+         </tr>
+      </tbody>
 
-   <tfoot>
-      <tr>
-         <td colspan="2"> <hr /> </td>
-      </tr>
-      <tr>
-         <th class="text-center" colspan="2"> Are You Sure? </th>
-      </tr>
-      <tr>
-         <td class="text-center" colspan="2">
-            <form method="post">
-               <input type="hidden" asp-for="Id" />
-               <input type="submit" class="btn-sm btn-danger m-1" value="Delete" />
-               <a asp-action="Detail" asp-route-peakId="@Model.Id" class="btn-sm btn-secondary m-1"> Cancel </a>
-            </form>
-         </td>
-      </tr>
-   </tfoot>
-</table>
+      <tfoot>
+         <tr>
+            <td colspan="2"> <hr /> </td>
+         </tr>
+         <tr>
+            <th class="text-center" colspan="2"> Are You Sure? </th>
+         </tr>
+         <tr>
+            <td class="text-center" colspan="2">
+               <form method="post">
+                  <input type="hidden" asp-for="Id" />
+                  <input type="submit" class="btn-sm btn-danger m-1" value="Delete" />
+                  <a asp-action="Detail" asp-route-peakId="@Model.Id" class="btn-sm btn-secondary m-1"> Cancel </a>
+               </form>
+            </td>
+         </tr>
+      </tfoot>
+   </table>
+</fieldset>

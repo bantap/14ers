@@ -253,6 +253,22 @@ namespace ProjectStep8.Migrations
                         .IsUnique();
 
                     b.ToTable("User");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Email = "PBanta101@GMail.Com",
+                            IsAdmin = true,
+                            Password = "479ed019aea4c1769a39d5ed0e79b7ca943486e2d15b937b0ff1725b2aed09b3"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Email = "PBanta101@Example.Com",
+                            IsAdmin = false,
+                            Password = "479ed019aea4c1769a39d5ed0e79b7ca943486e2d15b937b0ff1725b2aed09b3"
+                        });
                 });
 
             modelBuilder.Entity("ProjectStep8.Models.Hike", b =>

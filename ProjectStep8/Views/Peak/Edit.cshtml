@@ -1,52 +1,50 @@
 ﻿@model Peak
 
-<form method="post">
-   <input type="hidden" asp-for="Id" />
+<fieldset class="border custom-control-inline p-2 shadow align-top mb-4">
+   <legend>
+      Edit Peak
+   </legend>
 
-   <table>
-      <thead>
-         <tr>
-            <td class="text-center" colspan="2">
-               <h2> Edit Peak </h2>
-            </td>
-         </tr>
-         <tr>
-            <td colspan="2"> <hr /> </td>
-         </tr>
-         <tr>
-            <td colspan="2">
-               <div asp-validation-summary="All">
-               </div>
-            </td>
-         </tr>
-      </thead>
+   <form method="post">
+      <input type="hidden" asp-for="Id" />
 
-      <tbody>
-         <tr>
-            <th class="text-right"> Name: </th>
-            <td> <input asp-for="Name" placeholder="Peak Name" /> </td>
-         </tr>
-         <tr>
-            <th class="text-right"> Elevation: </th>
-            <td> <input asp-for="Elevation" placeholder="Peak Elevation" /> </td>
-         </tr>
-         <tr>
-            <th class="text-right"> Nearest Town: </th>
-            <td> <input asp-for="NearestTown" placeholder="Nearest Town" /> </td>
-         </tr>
-         <tr>
-            <th class="text-right"> County: </th>
-            <td> <input asp-for="County" placeholder="County" /> </td>
-         </tr>
-         <tr>
-            <td colspan="2"> <hr /> </td>
-         </tr>
-         <tr>
-            <td class="text-center" colspan="2">
-               <input class="btn-sm btn-warning" type="submit" value="Save" />
-               <a asp-action="Detail" asp-route-peakId="@Model.Id" class="btn-sm btn-secondary"> Cancel </a>
-            </td>
-         </tr>
-      </tbody>
-   </table>
-</form>
+      <table>
+         <thead>
+            <tr>
+               <td colspan="2">
+                  <div asp-validation-summary="All">
+                  </div>
+               </td>
+            </tr>
+         </thead>
+
+         <tbody>
+            <tr>
+               <th class="text-right"> Name: </th>
+               <td> <input asp-for="Name" placeholder="Peak Name" /> </td>
+            </tr>
+            <tr>
+               <th class="text-right"> Elevation: </th>
+               <td> <input asp-for="Elevation" placeholder="Peak Elevation" /> </td>
+            </tr>
+            <tr>
+               <th class="text-right"> Nearest Town: </th>
+               <td> <input asp-for="NearestTown" placeholder="Nearest Town" /> </td>
+            </tr>
+            <tr>
+               <th class="text-right"> County: </th>
+               <td> <input asp-for="County" placeholder="County" /> </td>
+            </tr>
+            <tr>
+               <td colspan="2"> <hr /> </td>
+            </tr>
+            <tr>
+               <td class="text-center" colspan="2">
+                  <input class="btn-sm btn-warning" type="submit" value="Save" />
+                  <a asp-action="Detail" asp-route-peakId="@Model.Id" class="btn-sm btn-secondary"> Cancel </a>
+               </td>
+            </tr>
+         </tbody>
+      </table>
+   </form>
+</fieldset>

@@ -1,50 +1,47 @@
 ﻿@model Peak
 
-<form method="post">
-   <table>
-      <thead>
-         <tr>
-            <td class="text-center" colspan="2">
-               <h2> Add A New Peak </h2>
-            </td>
-         </tr>
-         <tr>
-            <td colspan="2"> <hr /> </td>
-         </tr>
-         <tr>
-            <td colspan="2">
-               <div asp-validation-summary="All">
-               </div>
-            </td>
-         </tr>
-      </thead>
+<fieldset class="border custom-control-inline p-2 shadow align-top mb-4">
+   <legend>
+      Add A New Peak
+   </legend>
+   <form method="post">
+      <table>
+         <thead>
+            <tr>
+               <td colspan="2">
+                  <div asp-validation-summary="All">
+                  </div>
+               </td>
+            </tr>
+         </thead>
 
-      <tbody>
-         <tr>
-            <th class="text-right"> Name: </th>
-            <td> <input asp-for="Name" placeholder="Peak Name" /> </td>
-         </tr>
-         <tr>
-            <th class="text-right"> Elevation: </th>
-            <td> <input asp-for="Elevation" placeholder="Peak Elevation" /> </td>
-         </tr>
-         <tr>
-            <th class="text-right"> Nearest Town: </th>
-            <td> <input asp-for="NearestTown" placeholder="Nearest Town" /> </td>
-         </tr>
-         <tr>
-            <th class="text-right"> County: </th>
-            <td> <input asp-for="County" placeholder="County" /> </td>
-         </tr>
-         <tr>
-            <td colspan="2"> <hr /> </td>
-         </tr>
-         <tr>
-            <td class="text-center" colspan="2">
-               <input class="btn-sm btn-primary m-1" type="submit" value="Add Peak" />
-               <a asp-action="Index" class="btn-sm btn-secondary m-1"> Cancel </a>
-            </td>
-         </tr>
-      </tbody>
-   </table>
-</form>
+         <tbody>
+            <tr>
+               <th class="text-right"> Name: </th>
+               <td> <input asp-for="Name" placeholder="Peak Name" /> </td>
+            </tr>
+            <tr>
+               <th class="text-right"> Elevation: </th>
+               <td> <input asp-for="Elevation" placeholder="Peak Elevation" /> </td>
+            </tr>
+            <tr>
+               <th class="text-right"> Nearest Town: </th>
+               <td> <input asp-for="NearestTown" placeholder="Nearest Town" /> </td>
+            </tr>
+            <tr>
+               <th class="text-right"> County: </th>
+               <td> <input asp-for="County" placeholder="County" /> </td>
+            </tr>
+            <tr>
+               <td colspan="2"> <hr /> </td>
+            </tr>
+            <tr>
+               <td class="text-center" colspan="2">
+                  <input class="btn-sm btn-primary m-1" type="submit" value="Add Peak" />
+                  <a asp-action="Index" class="btn-sm btn-secondary m-1"> Cancel </a>
+               </td>
+            </tr>
+         </tbody>
+      </table>
+   </form>
+</fieldset>

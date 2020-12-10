@@ -1,8 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ProjectStep8.Migrations
 {
-    public partial class PeaksAndTrails : Migration
+    public partial class OneMigrationToRuleThemAll : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -20,6 +21,21 @@ namespace ProjectStep8.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Peak", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "User",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Email = table.Column<string>(maxLength: 128, nullable: false),
+                    Password = table.Column<string>(maxLength: 128, nullable: false),
+                    IsAdmin = table.Column<bool>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_User", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -44,6 +60,28 @@ namespace ProjectStep8.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Hike",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserId = table.Column<int>(nullable: false),
+                    TrailId = table.Column<int>(nullable: false),
+                    Date = table.Column<DateTime>(nullable: false),
+                    Notes = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Hike", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Hike_Trail_TrailId",
+                        column: x => x.TrailId,
+                        principalTable: "Trail",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.InsertData(
                 table: "Peak",
                 columns: new[] { "Id", "County", "Elevation", "Name", "NearestTown" },
@@ -64,6 +102,15 @@ namespace ProjectStep8.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "User",
+                columns: new[] { "Id", "Email", "IsAdmin", "Password" },
+                values: new object[,]
+                {
+                    { 1, "PBanta101@GMail.Com", true, "479ed019aea4c1769a39d5ed0e79b7ca943486e2d15b937b0ff1725b2aed09b3" },
+                    { 2, "PBanta101@Example.Com", false, "479ed019aea4c1769a39d5ed0e79b7ca943486e2d15b937b0ff1725b2aed09b3" }
+                });
+
+            migrationBuilder.InsertData(
                 table: "Trail",
                 columns: new[] { "Id", "Distance", "Name", "PeakId", "StartingElevation" },
                 values: new object[,]
@@ -76,13 +123,30 @@ namespace ProjectStep8.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_Hike_TrailId",
+                table: "Hike",
+                column: "TrailId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Trail_PeakId",
                 table: "Trail",
                 column: "PeakId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_User_Email",
+                table: "User",
+                column: "Email",
+                unique: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Hike");
+
+            migrationBuilder.DropTable(
+                name: "User");
+
             migrationBuilder.DropTable(
                 name: "Trail");
 
