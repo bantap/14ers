@@ -1,11 +1,30 @@
 ﻿@model User
 
-<form method="post">
-   UserName (EMail Address):
-   <input asp-for="Email" required />
-   <br />
-   Password:
-   <input asp-for="Password" required />
-   <br />
-   <input type="submit" value="Register" />
-</form>
+<fieldset class="border custom-control-inline p-2 shadow">
+   <legend> Register </legend>
+
+   <form method="post">
+      <table>
+         <tbody>
+            <tr>
+               <th class="text-right"> <span class="m-1"> EMail Address: </span> </th>
+               <td> <input asp-for="Email" class="m-1" placeholder="Your EMail Address" required title="Email Address" /> </td>
+            </tr>
+
+            <tr>
+               <th class="text-right"> <span class="m-1"> Password: </span> </th>
+               <td> <input asp-for="Password" class="m-1" placeholder="Your Password" required title="Password" /> </td>
+            </tr>
+
+            <tr> <td colspan="2"> <hr /> </td> </tr>
+
+            <tr>
+               <td class="text-center" colspan="2">
+                  <input class="btn btn-sm btn-primary m-1" type="submit" value="Register" />
+                  <a asp-controller="Home" asp-action="Index" class="btn btn-sm btn-secondary m-1"> Cancel </a>
+               </td>
+            </tr>
+         </tbody>
+      </table>
+   </form>
+</fieldset>

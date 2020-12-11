@@ -44,6 +44,11 @@ namespace ProjectStep8.Models
 
       //   R e a d
 
+      public IQueryable<Trail> GetAllTrails()
+      {
+         return _context.Trails.Include(t => t.Peak);
+      }
+
       public Trail GetTrailById(int trailId)
       {
          return _context.Trails.Include(t => t.Peak).FirstOrDefault(t => t.Id == trailId);

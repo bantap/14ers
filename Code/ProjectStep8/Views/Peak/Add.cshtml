@@ -1,47 +1,55 @@
 ﻿@model Peak
 
 <fieldset class="border custom-control-inline p-2 shadow align-top mb-4">
-   <legend>
-      Add A New Peak
-   </legend>
+   <legend> Add A New Peak </legend>
+
    <form method="post">
       <table>
-         <thead>
-            <tr>
-               <td colspan="2">
-                  <div asp-validation-summary="All">
-                  </div>
-               </td>
-            </tr>
-         </thead>
+         @if (ViewData.ModelState.ErrorCount > 0)
+         {
+            <thead>
+               <tr>
+                  <td colspan="2">
+                     <div asp-validation-summary="All"> </div>
+                  </td>
+               </tr>
+
+               <tr> <td colspan="2"> <hr /> </td> </tr>
+            </thead>
+         }
 
          <tbody>
             <tr>
-               <th class="text-right"> Name: </th>
-               <td> <input asp-for="Name" placeholder="Peak Name" /> </td>
+               <th class="text-right"> <span class="m-1"> Name: </span> </th>
+               <td> <input asp-for="Name" class="m-1" placeholder="Peak Name" required title="Peak Name" /> </td>
             </tr>
+
             <tr>
-               <th class="text-right"> Elevation: </th>
-               <td> <input asp-for="Elevation" placeholder="Peak Elevation" /> </td>
+               <th class="text-right"> <span class="m-1"> Elevation: </span> </th>
+               <td> <input asp-for="Elevation" class="m-1" placeholder="Peak Elevation" required title="Peak Elevation" /> </td>
             </tr>
+
             <tr>
-               <th class="text-right"> Nearest Town: </th>
-               <td> <input asp-for="NearestTown" placeholder="Nearest Town" /> </td>
+               <th class="text-right"> <span class="m-1"> County: </span> </th>
+               <td> <input asp-for="County" class="m-1" placeholder="County" title="County" /> </td>
             </tr>
+
             <tr>
-               <th class="text-right"> County: </th>
-               <td> <input asp-for="County" placeholder="County" /> </td>
-            </tr>
-            <tr>
-               <td colspan="2"> <hr /> </td>
-            </tr>
-            <tr>
-               <td class="text-center" colspan="2">
-                  <input class="btn-sm btn-primary m-1" type="submit" value="Add Peak" />
-                  <a asp-action="Index" class="btn-sm btn-secondary m-1"> Cancel </a>
-               </td>
+               <th class="text-right"> <span class="m-1"> Nearest Town: </span> </th>
+               <td> <input asp-for="NearestTown" class="m-1" placeholder="Nearest Town" title="Nearest Town" /> </td>
             </tr>
          </tbody>
+
+         <tfoot>
+            <tr> <td colspan="2"> <hr /> </td> </tr>
+
+            <tr>
+               <td class="text-center" colspan="2">
+                  <input class="btn btn-sm btn-primary m-1" type="submit" value="Add Peak" />
+                  <a asp-controller="Home" asp-action="Index" class="btn btn-sm btn-secondary m-1"> Cancel </a>
+               </td>
+            </tr>
+         </tfoot>
       </table>
    </form>
 </fieldset>

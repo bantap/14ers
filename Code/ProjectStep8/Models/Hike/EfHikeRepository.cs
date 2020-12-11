@@ -23,50 +23,60 @@ namespace ProjectStep8.Models
 
       //   C r e a t e
 
-      public Hike CreateHike(Hike h)
+      public Hike CreateHike(Hike hike)
       {
-         throw new System.NotImplementedException();
+         hike.UserId = _userRepository.GetLoggedInUserId();
+         _context.Hikes.Add(hike);
+         _context.SaveChanges();
+         return hike;
       }
 
       //   R e a d
 
       public IQueryable<Hike> GetAllHikes()
       {
-         return _context.Hikes.Where(c => c.UserId == _userRepository.GetLoggedInUserId());
+         return _context.Hikes.Where(h => h.UserId == _userRepository.GetLoggedInUserId())
+                              .Include(h => h.Trail)
+                              .ThenInclude(t => t.Peak);
       }
 
       public Hike GetHikeById(int hikeId)
       {
-         Hike h = _context.Hikes.Include(c => c.Trail).FirstOrDefault(c => c.Id == hikeId);
-         return h;
+         return _context.Hikes.Include(h => h.Trail)
+                              .ThenInclude(t => t.Peak)
+                              .FirstOrDefault(h => h.Id == hikeId && h.UserId == _userRepository.GetLoggedInUserId());
       }
 
       //   U p d a t e
 
-      public Hike UpdateHike(Hike h)
+      public Hike UpdateHike(Hike hike)
       {
-         if (h != null)
+         if (hike == null)
          {
-            Hike hikeToUpdate = _context.Hikes.Find(h.Id);
-            if (hikeToUpdate != null)
-            {
-               hikeToUpdate.Date = h.Date;
-               hikeToUpdate.Notes = h.Notes;
-               hikeToUpdate.TrailId = h.TrailId;
-               hikeToUpdate.UserId = h.UserId;
-               _context.SaveChanges();
-               return hikeToUpdate;
-            }
+            return null;
          }
 
-         return null;
+         Hike hikeToUpdate = getHikeById(hike.Id);
+         if (hikeToUpdate != null)
+         {
+            hikeToUpdate.Date = hike.Date;
+            hikeToUpdate.Notes = hike.Notes;
+            hikeToUpdate.Share = hike.Share;
+            hikeToUpdate.TrailCondition = hike.TrailCondition;
+            hikeToUpdate.TrailId = hike.TrailId;
+            hikeToUpdate.UserId = hike.UserId;
+            hikeToUpdate.Weather = hike.Weather;
+            _context.SaveChanges();
+         }
+
+         return hikeToUpdate;
       }
 
       //   D e l e t e
 
       public bool DeleteHike(int hikeId)
       {
-         Hike hikeToDelete = GetHikeById(hikeId);
+         Hike hikeToDelete = getHikeById(hikeId);
          if (hikeToDelete != null)
          {
             _context.Hikes.Remove(hikeToDelete);
@@ -77,5 +87,11 @@ namespace ProjectStep8.Models
          return false;
       }
 
+      //   P r i v a t e   M e t h o d s
+
+      private Hike getHikeById(int hikeId)
+      {
+         return _context.Hikes.FirstOrDefault(h => h.Id == hikeId && h.UserId == _userRepository.GetLoggedInUserId());
+      }
    }
 }

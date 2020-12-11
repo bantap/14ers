@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ProjectStep8.Models;
 using System.Diagnostics;
-using System.Linq;
 
 namespace ProjectStep8.Controllers
 {
@@ -27,8 +26,7 @@ namespace ProjectStep8.Controllers
 
       public IActionResult Index()
       {
-         IQueryable<Peak> allPeaks = _repository.GetAllPeaks();
-         return View(allPeaks);
+         return View(_repository.GetAllPeaks());
       } // end Index( )
 
       //   U p d a t e

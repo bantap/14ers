@@ -10,6 +10,8 @@ namespace ProjectStep8.Models
 
       //   R e a d
 
+      public IQueryable<Trail> GetAllTrails();
+
       public Trail GetTrailById(int trailId);
 
       //   U p d a t e

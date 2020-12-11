@@ -14,13 +14,13 @@ namespace ProjectStep8.Models
       [Required(ErrorMessage = "Peak Name Is Required")]
       public string Name { get; set; }
 
+      [Range(14000, 14999, ErrorMessage = "Peak Elevation Must Be In The 14,000 Foot Range")]
       [Required(ErrorMessage = "Peak Elevation Is Required")]
       public int Elevation { get; set; }
 
-      public string NearestTown { get; set; }
-
       public string County { get; set; }
 
+      public string NearestTown { get; set; }
 
       public List<Trail> Trails { get; set; }
 

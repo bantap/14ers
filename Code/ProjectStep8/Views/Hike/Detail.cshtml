@@ -1,0 +1,45 @@
+﻿@model Hike
+
+<fieldset class="border custom-control-inline p-2 shadow align-top mb-4">
+   <legend>
+      Hike Detail
+   </legend>
+   <form method="post">
+      <table>
+         <tbody>
+            <tr>
+               <th class="text-right"> Date: </th>
+               <td> @Model.Date?.ToString("MM-dd-yyyy") </td>
+            </tr>
+            <tr>
+               <th class="text-right"> Peak: </th>
+               <td> @Model.Trail.Peak.Name </td>
+            </tr>
+            <tr>
+               <th class="text-right"> Trail: </th>
+               <td> @Model.Trail.Name </td>
+            </tr>
+            <tr>
+               <th class="text-right"> Trail Condition: </th>
+               <td> @Model.TrailCondition </td>
+            </tr>
+            <tr>
+               <th class="text-right"> Weather: </th>
+               <td> @Model.Weather </td>
+            </tr>
+            <tr>
+               <th class="text-right"> Notes: </th>
+               <td> @Model.Notes </td>
+            </tr>
+            <tr>
+               <td colspan="2"> <hr /> </td>
+            </tr>
+            <tr>
+               <td class="text-center" colspan="2">
+                  <a asp-action="Index" class="btn-sm btn-secondary m-1"> Back </a>
+               </td>
+            </tr>
+         </tbody>
+      </table>
+   </form>
+</fieldset>

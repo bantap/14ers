@@ -2,41 +2,42 @@
 @inject IUserRepository UserRepository
 
 <fieldset class="border custom-control-inline p-2 shadow align-top mb-4">
-   <legend>
-      Peak Details
-   </legend>
+   <legend> Peak Details </legend>
+
    <table>
       <tbody>
          <tr>
-            <th class="text-right"> Name: </th>
-            <td> @Model.Name </td>
+            <th class="text-right"> <span class="m-1"> Name: </span> </th>
+            <td> <span class="m-1"> @Model.Name </span> </td>
          </tr>
+
          <tr>
-            <th class="text-right"> Elevation: </th>
-            <td> @Model.Elevation.ToString("N0") </td>
+            <th class="text-right"> <span class="m-1"> Elevation: </span> </th>
+            <td> <span class="m-1"> @Model.Elevation.ToString("N0") </span> </td>
          </tr>
+
          <tr>
-            <th class="text-right"> Nearest Town: </th>
-            <td> @Model.NearestTown </td>
+            <th class="text-right"> <span class="m-1"> County: </span> </th>
+            <td> <span class="m-1"> @Model.County </span> </td>
          </tr>
+
          <tr>
-            <th class="text-right"> County: </th>
-            <td> @Model.County </td>
+            <th class="text-right"> <span class="m-1"> Nearest Town: </span> </th>
+            <td> <span class="m-1"> @Model.NearestTown </span> </td>
          </tr>
       </tbody>
 
       <tfoot>
-         <tr>
-            <td colspan="2"> <hr /> </td>
-         </tr>
+         <tr> <td colspan="2"> <hr /> </td> </tr>
+
          <tr>
             <td class="text-center" colspan="2">
                @if (UserRepository.IsUserAdmin())
                {
-                  <a asp-action="Edit" asp-route-peakId="@Model.Id" class="btn-sm btn-warning m-1"> Edit   </a>
-                  <a asp-action="Delete" asp-route-peakId="@Model.Id" class="btn-sm btn-danger m-1"> Delete </a>
+                  <a asp-action="Edit"   asp-route-peakId="@Model.Id" class="btn btn-sm btn-warning m-1"> Edit   </a>
+                  <a asp-action="Delete" asp-route-peakId="@Model.Id" class="btn btn-sm btn-danger  m-1"> Delete </a>
                }
-               <a asp-action="Index" class="btn-sm btn-secondary m-1"> Back   </a>
+               <a asp-action="Index" class="btn btn-sm btn-secondary m-1"> Back </a>
             </td>
          </tr>
       </tfoot>
@@ -44,16 +45,15 @@
 </fieldset>
 
 <fieldset class="border custom-control-inline p-2 shadow align-top">
-   <legend>
-      Trails
-   </legend>
+   <legend> Trails </legend>
+
    <table>
       <thead>
          <tr>
-            <th class="text-left">   <span class="mr-1"> Name               </span> </th>
-            <th class="text-center"> <span class="m-1">  Starting Elevation </span> </th>
-            <th class="text-center"> <span class="m-1">  Distance           </span> </th>
-            <th class="text-center"> <span class="ml-1"> Actions            </span> </th>
+            <th class="text-left">   <span class="m-1"> Name               </span> </th>
+            <th class="text-center"> <span class="m-1"> Starting Elevation </span> </th>
+            <th class="text-center"> <span class="m-1"> Distance           </span> </th>
+            <th class="text-center"> <span class="m-1"> Actions            </span> </th>
          </tr>
       </thead>
 
@@ -61,15 +61,15 @@
          @foreach (Trail t in Model.Trails)
          {
             <tr>
-               <td>                     <span class="mr-1"> @t.Name                             </span> </td>
-               <td class="text-center"> <span class="m-1 "> @t.StartingElevation.ToString("N0") </span> </td>
-               <td class="text-center"> <span class="m-1 "> @t.Distance.ToString("N1")          </span> </td>
+               <td>                     <span class="m-1"> @t.Name                             </span> </td>
+               <td class="text-center"> <span class="m-1"> @t.StartingElevation.ToString("N0") </span> </td>
+               <td class="text-center"> <span class="m-1"> @t.Distance.ToString("N1")          </span> </td>
                <td>
-                  <a asp-controller="Trail" asp-action="Detail" asp-route-trailId="@t.Id" class="btn-sm btn-info    m-1 " title="Trail Details"> Details </a>
+                  <a asp-controller="Trail" asp-action="Detail" asp-route-trailId="@t.Id" class="btn btn-sm btn-info m-1" title="Trail Details"> Details </a>
                   @if (UserRepository.IsUserAdmin())
                   {
-                     <a asp-controller="Trail" asp-action="Edit"   asp-route-trailId="@t.Id" class="btn-sm btn-warning m-1"  title="Edit Trail" > Edit   </a>
-                     <a asp-controller="Trail" asp-action="Delete" asp-route-trailId="@t.Id" class="btn-sm btn-danger  ml-1" title="DeleteTrail"> Delete </a>
+                     <a asp-controller="Trail" asp-action="Edit"   asp-route-trailId="@t.Id" class="btn btn-sm btn-warning m-1" title="Edit Trail" > Edit   </a>
+                     <a asp-controller="Trail" asp-action="Delete" asp-route-trailId="@t.Id" class="btn btn-sm btn-danger  m-1" title="DeleteTrail"> Delete </a>
                   }
                </td>
             </tr>
@@ -79,12 +79,11 @@
       @if (UserRepository.IsUserAdmin())
       {
          <tfoot>
-            <tr>
-               <td colspan="4"> <hr /> </td>
-            </tr>
+            <tr> <td colspan="4"> <hr /> </td> </tr>
+
             <tr>
                <td class="text-center" colspan="4">
-                  <a asp-controller="Trail" asp-action="Add" asp-route-peakId="@Model.Id" class="btn-sm btn-primary m-1"> Add A Trail </a>
+                  <a asp-controller="Trail" asp-action="Add" asp-route-peakId="@Model.Id" class="btn btn-sm btn-primary m-1"> Add A Trail </a>
                </td>
             </tr>
          </tfoot>

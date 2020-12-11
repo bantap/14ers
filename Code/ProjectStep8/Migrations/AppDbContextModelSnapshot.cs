@@ -26,10 +26,17 @@ namespace ProjectStep8.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("datetime2");
+                    b.Property<DateTime?>("Date")
+                        .IsRequired()
+                        .HasColumnType("date");
 
                     b.Property<string>("Notes")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Share")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("TrailCondition")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("TrailId")
@@ -37,6 +44,9 @@ namespace ProjectStep8.Migrations
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
+
+                    b.Property<string>("Weather")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 

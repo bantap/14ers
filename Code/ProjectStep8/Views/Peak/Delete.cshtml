@@ -1,43 +1,44 @@
 ﻿@model Peak
 
-<fieldset class="border custom-control-inline p-2 shadow align-top mb-4">
-   <legend>
-      Delete Peak
-   </legend>
+<fieldset class="border custom-control-inline p-2 shadow">
+   <legend> Delete Peak </legend>
 
    <table>
       <tbody>
          <tr>
-            <th class="text-right"> Name: </th>
-            <td> @Model.Name </td>
+            <th class="text-right"> <span class="m-1"> Name: </span> </th>
+            <td> <span class="m-1"> @Model.Name </span> </td>
          </tr>
+
          <tr>
-            <th class="text-right"> Elevation: </th>
-            <td> @Model.Elevation.ToString("N0") </td>
+            <th class="text-right"> <span class="m-1"> Elevation: </span> </th>
+            <td> <span class="m-1"> @Model.Elevation.ToString("N0") </span> </td>
          </tr>
+
          <tr>
-            <th class="text-right"> Nearest Town: </th>
-            <td> @Model.NearestTown </td>
+            <th class="text-right"> <span class="m-1"> County: </span> </th>
+            <td> <span class="m-1"> @Model.County </span> </td>
          </tr>
+
          <tr>
-            <th class="text-right"> County: </th>
-            <td> @Model.County </td>
+            <th class="text-right"> <span class="m-1"> Nearest Town: </span> </th>
+            <td> <span class="m-1"> @Model.NearestTown </span> </td>
          </tr>
       </tbody>
 
       <tfoot>
-         <tr>
-            <td colspan="2"> <hr /> </td>
-         </tr>
+         <tr> <td colspan="2"> <hr /> </td> </tr>
+
          <tr>
             <th class="text-center" colspan="2"> Are You Sure? </th>
          </tr>
+
          <tr>
             <td class="text-center" colspan="2">
                <form method="post">
                   <input type="hidden" asp-for="Id" />
-                  <input type="submit" class="btn-sm btn-danger m-1" value="Delete" />
-                  <a asp-action="Detail" asp-route-peakId="@Model.Id" class="btn-sm btn-secondary m-1"> Cancel </a>
+                  <input type="submit" class="btn btn-sm btn-danger m-1" value="Delete" />
+                  <a asp-action="Detail" asp-route-peakId="@Model.Id" class="btn btn-sm btn-secondary m-1"> Cancel </a>
                </form>
             </td>
          </tr>

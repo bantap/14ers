@@ -68,8 +68,11 @@ namespace ProjectStep8.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     UserId = table.Column<int>(nullable: false),
                     TrailId = table.Column<int>(nullable: false),
-                    Date = table.Column<DateTime>(nullable: false),
-                    Notes = table.Column<string>(nullable: true)
+                    Date = table.Column<DateTime>(type: "date", nullable: false),
+                    TrailCondition = table.Column<string>(nullable: true),
+                    Weather = table.Column<string>(nullable: true),
+                    Notes = table.Column<string>(nullable: true),
+                    Share = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {

@@ -1,0 +1,87 @@
+﻿@model Hike
+@inject ITrailRepository TrailRepository
+
+@{
+   IQueryable<Trail> allTrails = TrailRepository.GetAllTrails().OrderBy(t => t.Peak.Name).ThenBy(t => t.Name);
+}
+
+<fieldset class="border custom-control-inline p-2 shadow align-top mb-4">
+   <legend>
+      Add A New Hike
+   </legend>
+   <form method="post">
+      <table>
+         <thead>
+            <tr>
+               <td colspan="2">
+                  <div asp-validation-summary="All">
+                  </div>
+               </td>
+            </tr>
+         </thead>
+
+         <tbody>
+            <tr>
+               <th class="text-right"> Trail: </th>
+               <td>
+                  <select asp-for="TrailId">
+                     @{
+                        string currentPeakName = "";
+                        foreach (Trail t in allTrails)
+                        {
+                           if (currentPeakName == "")
+                           {
+                              @: <optgroup label="@t.Peak.Name">
+                              currentPeakName = t.Peak.Name;
+                           }
+                           else if (currentPeakName != t.Peak.Name)
+                           {
+                              @: </optgroup>
+                              @: <optgroup label="@t.Peak.Name">
+                              currentPeakName = t.Peak.Name;
+                           }
+
+                           if (t.Id == Model.TrailId)
+                           {
+                              @: <option selected value="@t.Id"> @t.Name </option>
+                           }
+                           else
+                           {
+                              @: <option value="@t.Id"> @t.Name </option>
+                           }
+                        } // end for each trail
+
+                        @: </optgroup>
+                     }
+                  </select>
+               </td>
+            </tr>
+            <tr>
+               <th class="text-right"> Date: </th>
+               <td> <input asp-for="Date" required value="@Model?.Date?.ToString("yyyy-MM-dd")" /> </td>
+            </tr>
+            <tr>
+               <th class="text-right"> Trail Condition: </th>
+               <td> <input asp-for="TrailCondition" placeholder="Trail Condition" /> </td>
+            </tr>
+            <tr>
+               <th class="text-right"> Weather: </th>
+               <td> <input asp-for="Weather" placeholder="Weather" /> </td>
+            </tr>
+            <tr>
+               <th class="text-right"> Notes: </th>
+               <td> <input asp-for="Notes" placeholder="Notes" /> </td>
+            </tr>
+            <tr>
+               <td colspan="2"> <hr /> </td>
+            </tr>
+            <tr>
+               <td class="text-center" colspan="2">
+                  <input class="btn-sm btn-primary m-1" type="submit" value="Add Hike" />
+                  <a asp-action="Index" class="btn-sm btn-secondary m-1"> Cancel </a>
+               </td>
+            </tr>
+         </tbody>
+      </table>
+   </form>
+</fieldset>
