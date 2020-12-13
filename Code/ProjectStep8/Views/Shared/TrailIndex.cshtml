@@ -22,12 +22,13 @@
                <td class="text-center"> <span class="m-1"> @t.StartingElevation.ToString("N0") </span> </td>
                <td class="text-center"> <span class="m-1"> @t.Distance.ToString("N1")          </span> </td>
                <td>
-                  <a asp-controller="Trail" asp-action="Detail" asp-route-trailId="@t.Id" class="btn btn-sm btn-info m-1" title="Trail Details"> Details </a>
+                  <a asp-controller="Trail" asp-action="Detail" asp-route-trailId="@t.Id" class="btn btn-sm btn-info m-1"> Details </a>
                   @if (UserRepository.IsUserAdmin())
                   {
-                     <a asp-controller="Trail" asp-action="Edit"   asp-route-trailId="@t.Id" class="btn btn-sm btn-warning m-1" title="Edit Trail" > Edit   </a>
-                     <a asp-controller="Trail" asp-action="Delete" asp-route-trailId="@t.Id" class="btn btn-sm btn-danger  m-1" title="DeleteTrail"> Delete </a>
+                     <a asp-controller="Trail" asp-action="Edit"   asp-route-trailId="@t.Id" class="btn btn-sm btn-warning m-1"> Edit   </a>
+                     <a asp-controller="Trail" asp-action="Delete" asp-route-trailId="@t.Id" class="btn btn-sm btn-danger  m-1"> Delete </a>
                   }
+                  <a asp-controller="Hike" asp-action="Add" asp-route-trailId="@t.Id" class="btn btn-sm btn-primary m-1"> Add A Hike </a>
                </td>
             </tr>
          }

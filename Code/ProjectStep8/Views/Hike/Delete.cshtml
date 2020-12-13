@@ -1,7 +1,7 @@
 ﻿@model Hike
 
 <fieldset class="border custom-control-inline p-2 shadow align-top mb-4">
-   <legend> Hike Detail </legend>
+   <legend> Delete Hike </legend>
 
    <table>
       <tbody>
@@ -40,10 +40,16 @@
          <tr> <td colspan="2"> <hr /> </td> </tr>
 
          <tr>
+            <th class="text-center" colspan="2"> <span class="m-1"> Are You Sure? </span> </th>
+         </tr>
+
+         <tr>
             <td class="text-center" colspan="2">
-               <a asp-controller="Hike" asp-action="Edit"   asp-route-hikeId="@Model.Id" class="btn-sm btn-warning   m-1"> Edit   </a>
-               <a asp-controller="Hike" asp-action="Delete" asp-route-hikeId="@Model.Id" class="btn-sm btn-danger    m-1"> Delete </a>
-               <a asp-controller="Hike" asp-action="Index"                               class="btn-sm btn-secondary m-1"> Back   </a>
+               <form method="post">
+                  <input type="hidden" asp-for="Id" />
+                  <input type="submit" class="btn btn-sm btn-danger m-1" value="Delete" />
+                  <a asp-controller="Hike" asp-action="Detail" asp-route-hikeId="@Model.Id" class="bth btn-sm btn-secondary m-1"> Cancel </a>
+               </form>
             </td>
          </tr>
       </tfoot>

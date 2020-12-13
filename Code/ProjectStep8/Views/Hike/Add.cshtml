@@ -6,25 +6,24 @@
 }
 
 <fieldset class="border custom-control-inline p-2 shadow align-top mb-4">
-   <legend>
-      Add A New Hike
-   </legend>
+   <legend> Add A Hike </legend>
+
    <form method="post">
       <table>
-         <thead>
-            <tr>
-               <td colspan="2">
-                  <div asp-validation-summary="All">
-                  </div>
-               </td>
-            </tr>
-         </thead>
+         @if (ViewData.ModelState.ErrorCount > 0)
+         {
+            <thead>
+               <tr> <td colspan="2"> <div asp-validation-summary="All"> </div> </td> </tr>
+
+               <tr> <td colspan="2"> <hr /> </td> </tr>
+            </thead>
+         }
 
          <tbody>
             <tr>
-               <th class="text-right"> Trail: </th>
+               <th class="text-right"> <span class="m-1"> Trail: </span> </th>
                <td>
-                  <select asp-for="TrailId">
+                  <select asp-for="TrailId" class="m-1">
                      @{
                         string currentPeakName = "";
                         foreach (Trail t in allTrails)
@@ -56,32 +55,38 @@
                   </select>
                </td>
             </tr>
+
             <tr>
-               <th class="text-right"> Date: </th>
-               <td> <input asp-for="Date" required value="@Model?.Date?.ToString("yyyy-MM-dd")" /> </td>
+               <th class="text-right"> <span class="m-1"> Date: </span> </th>
+               <td> <input asp-for="Date" class="m-1" required value="@Model?.Date?.ToString("yyyy-MM-dd")" /> </td>
             </tr>
+
             <tr>
-               <th class="text-right"> Trail Condition: </th>
-               <td> <input asp-for="TrailCondition" placeholder="Trail Condition" /> </td>
+               <th class="text-right"> <span class="m-1"> Trail Condition: </span> </th>
+               <td> <input asp-for="TrailCondition" class="m-1" placeholder="Trail Condition" /> </td>
             </tr>
+
             <tr>
-               <th class="text-right"> Weather: </th>
-               <td> <input asp-for="Weather" placeholder="Weather" /> </td>
+               <th class="text-right"> <span class="m-1"> Weather: </span> </th>
+               <td> <input asp-for="Weather" class="m-1" placeholder="Weather" /> </td>
             </tr>
+
             <tr>
-               <th class="text-right"> Notes: </th>
-               <td> <input asp-for="Notes" placeholder="Notes" /> </td>
-            </tr>
-            <tr>
-               <td colspan="2"> <hr /> </td>
-            </tr>
-            <tr>
-               <td class="text-center" colspan="2">
-                  <input class="btn-sm btn-primary m-1" type="submit" value="Add Hike" />
-                  <a asp-action="Index" class="btn-sm btn-secondary m-1"> Cancel </a>
-               </td>
+               <th class="text-right"> <span class="m-1"> Notes: </span> </th>
+               <td> <input asp-for="Notes" class="m-1" placeholder="Notes" /> </td>
             </tr>
          </tbody>
+
+         <tfoot>
+            <tr> <td colspan="2"> <hr /> </td> </tr>
+
+            <tr>
+               <td class="text-center" colspan="2">
+                  <input class="btn btn-sm btn-primary m-1" type="submit" value="Save" />
+                  <a asp-action="Index" class="btn btn-sm btn-secondary m-1"> Cancel </a>
+               </td>
+            </tr>
+         </tfoot>
       </table>
    </form>
 </fieldset>

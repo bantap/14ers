@@ -7,41 +7,43 @@
    <table>
       <thead>
          <tr>
-            <th class="text-center mr-4"> Date      </th>
-            <th class="text-center m-4" > Peak      </th>
-            <th class="text-center m-4" > Trail     </th>
-            <th class="text-center m-4" > From Elev </th>
-            <th class="text-center m-4" > To Elev   </th>
-            <th class="text-center m-4" > Gain      </th>
-            <th class="text-center ml-4"> Actions   </th>
+            <th class="text-center"> <span class="m-1"> Date      </span> </th>
+            <th class="text-center"> <span class="m-1"> Peak      </span> </th>
+            <th class="text-center"> <span class="m-1"> Trail     </span> </th>
+            <th class="text-center"> <span class="m-1"> From Elev </span> </th>
+            <th class="text-center"> <span class="m-1"> To Elev   </span> </th>
+            <th class="text-center"> <span class="m-1"> Gain      </span> </th>
+            <th class="text-center"> <span class="m-1"> Actions   </span> </th>
          </tr>
       </thead>
 
       <tbody>
          @foreach (Hike h in Model)
          {
-         <tr>
-            <td class="text-center mr-4"> @h.Date?.ToString("MM-dd-yyyy")                                        </td>
-            <td class="            m-4" > @h.Trail.Peak.Name                                                     </td>
-            <td class="            m-4" > @h.Trail.Name                                                          </td>
-            <td class="text-center m-4" > @h.Trail.StartingElevation.ToString("N0")                              </td>
-            <td class="text-center m-4" > @h.Trail.Peak.Elevation.ToString("N0")                                 </td>
-            <td class="text-center m-4" > @((h.Trail.Peak.Elevation - h.Trail.StartingElevation).ToString("N0")) </td>
-            <td class="text-center ml-4">
-               <a asp-controller="Hike" asp-action="Detail" asp-route-peakId="@h.Id" class="btn-sm btn-info m-1"    title="Hike Details"> Details </a>
-               <a asp-controller="Hike" asp-action="Edit"   asp-route-peakId="@h.Id" class="btn-sm btn-warning m-1" title="Edit Hike">    Edit    </a>
-               <a asp-controller="Hike" asp-action="Delete" asp-route-peakId="@h.Id" class="btn-sm btn-danger  m-1" title="Delete Hike">  Delete  </a>
-            </td>
-         </tr>
+            <tr>
+               <td class="text-center"> <span class="m-1"> @h.Date?.ToString("MM-dd-yyyy") </span> </td>
+               <td>                     <span class="m-1"> @h.Trail.Peak.Name                                                     </span> </td>
+               <td>                     <span class="m-1"> @h.Trail.Name                                                          </span> </td>
+               <td class="text-center"> <span class="m-1"> @h.Trail.StartingElevation.ToString("N0")                              </span> </td>
+               <td class="text-center"> <span class="m-1"> @h.Trail.Peak.Elevation.ToString("N0")                                 </span> </td>
+               <td class="text-center"> <span class="m-1"> @((h.Trail.Peak.Elevation - h.Trail.StartingElevation).ToString("N0")) </span> </td>
+               <td class="text-center">
+                  <a asp-controller="Hike" asp-action="Detail" asp-route-hikeId="@h.Id" class="btn btn-sm btn-info    m-1"> Details </a>
+                  <a asp-controller="Hike" asp-action="Edit"   asp-route-hikeId="@h.Id" class="btn btn-sm btn-warning m-1"> Edit    </a>
+                  <a asp-controller="Hike" asp-action="Delete" asp-route-hikeId="@h.Id" class="btn btn-sm btn-danger  m-1"> Delete  </a>
+               </td>
+            </tr>
          }
+      </tbody>
+
+      <tfoot>
+         <tr> <td colspan="7"> <hr /> </td> </tr>
+
          <tr>
-            <td colspan="3"> <hr /> </td>
-         </tr>
-         <tr>
-            <td class="text-center" colspan="3">
+            <td class="text-center" colspan="7">
                <a asp-controller="Hike" asp-action="Add" class="btn-sm btn-primary m-1"> Add A New Hike </a>
             </td>
          </tr>
-      </tbody>
+      </tfoot>
    </table>
 </fieldset>

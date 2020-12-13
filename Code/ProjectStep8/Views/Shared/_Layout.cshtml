@@ -23,14 +23,19 @@
                   <li class="nav-item">
                      <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                   </li>
-                  <li class="nav-item">
-                     <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                  </li>
+
+                  @*
+                     <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                     </li>
+                  *@
+
                   @if (Foo.IsUserLoggedIn() == false)
                   {
                      <li class="nav-item">
                         <a class="nav-link text-dark" asp-controller="User" asp-action="Login">Login</a>
                      </li>
+
                      <li class="nav-item">
                         <a class="nav-link text-dark" asp-controller="User" asp-action="Register">Register</a>
                      </li>
@@ -38,11 +43,13 @@
                   else
                   {
                      <li class="nav-item">
-                        <a class="nav-link text-dark" asp-controller="GoalsAndHikes" asp-action="Index">Goals And Hikes</a>
+                        <a class="nav-link text-dark" asp-controller="Hike" asp-action="Index">Goals And Hikes</a>
                      </li>
+
                      <li class="nav-link">
                         @Foo.GetLoggedInUserEmail()
                      </li>
+
                      <li class="nav-item">
                         <a class="nav-link text-dark" asp-controller="User" asp-action="Logout">Logout</a>
                      </li>
@@ -52,6 +59,7 @@
          </div>
       </nav>
    </header>
+
    <div class="container">
       <main role="main" class="pb-3">
          @RenderBody()
@@ -60,12 +68,14 @@
 
    <footer class="border-top footer text-muted">
       <div class="container">
-         &copy; 2020 - ProjectStep8 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+         &copy; 2020 - XLUniMax @* - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a> *@
       </div>
    </footer>
+
    <script src="~/lib/jquery/dist/jquery.min.js"></script>
    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
    <script src="~/js/site.js" asp-append-version="true"></script>
+
    @RenderSection("Scripts", required: false)
 </body>
 </html>

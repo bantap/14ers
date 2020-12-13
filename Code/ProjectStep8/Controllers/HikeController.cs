@@ -1,9 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ProjectStep8.Models;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace ProjectStep8.Controllers
 {
@@ -28,14 +25,14 @@ namespace ProjectStep8.Controllers
       //   C r e a t e
 
       [HttpGet]
-      public IActionResult Add()
+      public IActionResult Add(int trailId)
       {
          if (!_userRepository.IsUserLoggedIn())
          {
             return RedirectToAction("Index", "Peak");
          }
 
-         return View(new Hike());
+         return View(new Hike { TrailId = trailId });
       }
 
       [HttpPost]
@@ -119,7 +116,39 @@ namespace ProjectStep8.Controllers
          return View(h);
       }
 
-
       //   D e l e t e
+
+      [HttpGet]
+      public IActionResult Delete(int hikeId)
+      {
+         if (!_userRepository.IsUserLoggedIn())
+         {
+            return RedirectToAction("Index", "Peak");
+         }
+
+         Hike h = _repository.GetHikeById(hikeId);
+         if (h == null)
+         {
+            return RedirectToAction("Index", "Peak");
+         }
+
+         return View(h);
+      }
+
+      [HttpPost]
+      public IActionResult Delete(Hike h)
+      {
+         if (!_userRepository.IsUserLoggedIn())
+         {
+            return RedirectToAction("Index", "Peak");
+         }
+
+         if (h != null)
+         {
+            _repository.DeleteHike(h.Id);
+         }
+
+         return RedirectToAction("Index");
+      }
    }
 }

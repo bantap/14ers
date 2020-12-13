@@ -13,9 +13,10 @@ namespace ProjectStep8.Controllers
 
       //   C o n s t r u c t o r s
 
-      public HomeController(IPeakRepository repository)
+      public HomeController(IPeakRepository repository, IUserRepository userRepository)
       {
          _repository = repository;
+         userRepository.Login(new Models.User { Email = "PBanta101@GMail.Com", Password = "Wombat1" });
       }
 
       //   M e t h o d s

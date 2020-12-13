@@ -7,6 +7,8 @@ namespace ProjectStep8.Models
    {
       //   F i e l d s   &   P r o p e r t i e s
 
+      public DbSet<Goal>  Goals  { get; set; }
+
       public DbSet<Hike>  Hikes  { get; set; }
 
       public DbSet<Peak>  Peaks  { get; set; }
