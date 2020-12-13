@@ -46,7 +46,7 @@ namespace ProjectStep8.Controllers
          if (ModelState.IsValid)
          {
             _repository.CreateHike(h);
-            return RedirectToAction("Index");
+            return RedirectToAction("Detail", new { hikeId = h.Id });
          }
 
          return View(h);
@@ -110,7 +110,7 @@ namespace ProjectStep8.Controllers
          if (ModelState.IsValid)
          {
             _repository.UpdateHike(h);
-            return RedirectToAction("Index");
+            return RedirectToAction("Detail", new { hikeId = h.Id } );
          }
 
          return View(h);

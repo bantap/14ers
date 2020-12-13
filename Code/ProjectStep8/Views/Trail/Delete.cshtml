@@ -1,44 +1,25 @@
 ﻿@model Trail
 
-<fieldset class="border custom-control-inline p-2 shadow align-top mb-4">
-   <legend>
-      Delete Trail
-   </legend>
+<fieldset class="border custom-control-inline p-2 shadow">
+   <legend> Delete Trail </legend>
 
    <table>
-      <tbody>
-         <tr>
-            <th class="text-right"> Peak: </th>
-            <td> @Model.Peak.Name </td>
-         </tr>
-         <tr>
-            <th class="text-right"> Trail Name: </th>
-            <td> @Model.Name </td>
-         </tr>
-         <tr>
-            <th class="text-right"> Starting Elevation: </th>
-            <td> @Model.StartingElevation.ToString("N0") </td>
-         </tr>
-         <tr>
-            <th class="text-right"> Distance: </th>
-            <td> @Model.Distance </td>
-         </tr>
-      </tbody>
+      <partial name="_DetailBody" model="@Model" />
 
       <tfoot>
-         <tr>
-            <td colspan="2"> <hr /> </td>
-         </tr>
+         <tr> <td colspan="2"> <hr /> </td> </tr>
+
          <tr>
             <th class="text-center" colspan="2"> Are You Sure? </th>
          </tr>
+
          <tr>
             <td class="text-center" colspan="2">
                <form method="post">
                   <input type="hidden" asp-for="Id" />
                   <input type="hidden" asp-for="PeakId" />
-                  <input type="submit" class="btn-sm btn-danger m-1" value="Delete" />
-                  <a asp-action="Detail" asp-route-trailId="@Model.Id" class="btn-sm btn-secondary m-1"> Cancel </a>
+                  <input type="submit" class="btn btn-sm btn-danger m-1" value="Delete" />
+                  <a asp-action="Detail" asp-route-trailId="@Model.Id" class="btn btn-sm btn-secondary m-1"> Cancel </a>
                </form>
             </td>
          </tr>

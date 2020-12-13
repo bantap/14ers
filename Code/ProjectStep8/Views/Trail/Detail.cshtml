@@ -2,41 +2,22 @@
 @inject IUserRepository UserRepository
 
 <fieldset class="border custom-control-inline p-2 shadow align-top mb-4">
-   <legend>
-      Trail Details
-   </legend>
+   <legend> Trail Details </legend>
+
    <table>
-      <tbody>
-         <tr>
-            <th class="text-right"> Peak: </th>
-            <td> @Model.Peak.Name </td>
-         </tr>
-         <tr>
-            <th class="text-right"> Trail Name: </th>
-            <td> @Model.Name </td>
-         </tr>
-         <tr>
-            <th class="text-right"> Starting Elevation: </th>
-            <td> @Model.StartingElevation.ToString("N0") </td>
-         </tr>
-         <tr>
-            <th class="text-right"> Distance: </th>
-            <td> @Model.Distance </td>
-         </tr>
-      </tbody>
+      <partial name="_DetailBody" model="@Model" />
 
       <tfoot>
-         <tr>
-            <td colspan="2"> <hr /> </td>
-         </tr>
+         <tr> <td colspan="2"> <hr /> </td> </tr>
+
          <tr>
             <td class="text-center" colspan="2">
                @if (UserRepository.IsUserAdmin())
                {
-                  <a asp-action="Edit"   asp-route-trailId="@Model.Id" class="btn-sm btn-warning m-1"> Edit   </a>
-                  <a asp-action="Delete" asp-route-trailId="@Model.Id" class="btn-sm btn-danger  m-1"> Delete </a>
+                  <a asp-action="Edit"   asp-route-trailId="@Model.Id" class="btn btn-sm btn-warning m-1"> Edit   </a>
+                  <a asp-action="Delete" asp-route-trailId="@Model.Id" class="btn btn-sm btn-danger  m-1"> Delete </a>
                }
-               <a asp-controller="Peak" asp-action="Detail" asp-route-peakId="@Model.PeakId" class="btn-sm btn-secondary m-1"> Back </a>
+               <a asp-controller="Peak" asp-action="Detail" asp-route-peakId="@Model.PeakId" class="btn btn-sm btn-secondary m-1"> Back </a>
             </td>
          </tr>
       </tfoot>

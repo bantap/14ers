@@ -1,0 +1,31 @@
+﻿@model Peak
+
+@if (ViewData.ModelState.ErrorCount > 0)
+{
+   <thead>
+      <tr> <td colspan="2"> <div asp-validation-summary="All"> </div> </td> </tr>
+      <tr> <td colspan="2"> <hr /> </td> </tr>
+   </thead>
+}
+
+<tbody>
+   <tr>
+      <th class="text-right"> <span class="m-1"> Name: </span> </th>
+      <td> <input asp-for="Name" class="m-1" placeholder="Peak Name" required /> </td>
+   </tr>
+
+   <tr>
+      <th class="text-right"> <span class="m-1"> Elevation: </span> </th>
+      <td> <input asp-for="Elevation" class="m-1" placeholder="Peak Elevation" required /> </td>
+   </tr>
+
+   <tr>
+      <th class="text-right"> <span class="m-1"> County: </span> </th>
+      <td> <input asp-for="County" class="m-1" placeholder="County" /> </td>
+   </tr>
+
+   <tr>
+      <th class="text-right"> <span class="m-1"> Nearest Town: </span> </th>
+      <td> <input asp-for="NearestTown" class="m-1" placeholder="Nearest Town" /> </td>
+   </tr>
+</tbody>

@@ -42,9 +42,10 @@ namespace ProjectStep8.Models
 
       public Hike GetHikeById(int hikeId)
       {
-         return _context.Hikes.Include(h => h.Trail)
+         return _context.Hikes.Where(h => h.Id == hikeId && h.UserId == _userRepository.GetLoggedInUserId())
+                              .Include(h => h.Trail)
                               .ThenInclude(t => t.Peak)
-                              .FirstOrDefault(h => h.Id == hikeId && h.UserId == _userRepository.GetLoggedInUserId());
+                              .FirstOrDefault();
       }
 
       //   U p d a t e
@@ -64,7 +65,6 @@ namespace ProjectStep8.Models
             hikeToUpdate.Share = hike.Share;
             hikeToUpdate.TrailCondition = hike.TrailCondition;
             hikeToUpdate.TrailId = hike.TrailId;
-            hikeToUpdate.UserId = hike.UserId;
             hikeToUpdate.Weather = hike.Weather;
             _context.SaveChanges();
          }

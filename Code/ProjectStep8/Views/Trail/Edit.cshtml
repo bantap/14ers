@@ -1,51 +1,25 @@
 ﻿@model Trail
 
-<fieldset class="border custom-control-inline p-2 shadow align-top mb-4">
-   <legend>
-      Edit Trail
-   </legend>
+<fieldset class="border custom-control-inline p-2 shadow">
+   <legend> Edit Trail </legend>
 
    <form method="post">
       <input type="hidden" asp-for="Id" />
       <input type="hidden" asp-for="PeakId" />
 
       <table>
-         <thead>
-            <tr>
-               <td colspan="2">
-                  <div asp-validation-summary="All">
-                  </div>
-               </td>
-            </tr>
-         </thead>
+         <partial name="_AddEditHeadBody" />
 
-         <tbody>
-            <tr>
-               <th class="text-right"> Peak: </th>
-               <td> @Model.Peak.Name </td>
-            </tr>
-            <tr>
-               <th class="text-right"> Trail Name: </th>
-               <td> <input asp-for="Name" placeholder="Trail Name" /> </td>
-            </tr>
-            <tr>
-               <th class="text-right"> Starting Elevation: </th>
-               <td> <input asp-for="StartingElevation" placeholder="Trail Starting Elevation" /> </td>
-            </tr>
-            <tr>
-               <th class="text-right"> Distance: </th>
-               <td> <input asp-for="Distance" placeholder="Trail Distance" /> </td>
-            </tr>
-            <tr>
-               <td colspan="2"> <hr /> </td>
-            </tr>
+         <tfoot>
+            <tr> <td colspan="2"> <hr /> </td> </tr>
+
             <tr>
                <td class="text-center" colspan="2">
-                  <input class="btn-sm btn-warning" type="submit" value="Save" />
-                  <a asp-action="Detail" asp-route-trailId="@Model.Id" class="btn-sm btn-secondary"> Cancel </a>
+                  <input class="btn btn-sm btn-warning" type="submit" value="Save" />
+                  <a asp-action="Detail" asp-route-trailId="@Model.Id" class="btn btn-sm btn-secondary"> Cancel </a>
                </td>
             </tr>
-         </tbody>
+         </tfoot>
       </table>
    </form>
 </fieldset>

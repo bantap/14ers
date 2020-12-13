@@ -1,0 +1,36 @@
+﻿@model Hike
+@inject ITrailRepository TrailRepository
+
+@{
+   IQueryable<Trail> allTrails = TrailRepository.GetAllTrails().OrderBy(t => t.Peak.Name).ThenBy(t => t.Name);
+   string currentPeakName = "";
+}
+
+<select asp-for="TrailId" class="m-1">
+   <option> Select Peak, Trail </option>
+
+   @foreach (Trail t in allTrails)
+   {
+      if (currentPeakName == "")
+      {
+         @: <optgroup label="@t.Peak.Name">
+         currentPeakName = t.Peak.Name;
+      }
+      else if (currentPeakName != t.Peak.Name)
+      {
+         @: </optgroup>
+         @: <optgroup label="@t.Peak.Name">
+         currentPeakName = t.Peak.Name;
+      }
+
+      if (t.Id == Model.TrailId)
+      {
+         @: <option selected value="@t.Id"> @t.Name </option>
+      }
+      else
+      {
+         @: <option value="@t.Id"> @t.Name </option>
+      }
+   } // end for each trail
+   </optgroup>
+</select>

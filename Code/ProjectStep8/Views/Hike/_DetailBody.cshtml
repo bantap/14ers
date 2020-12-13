@@ -1,0 +1,33 @@
+﻿@model Hike
+
+<tbody>
+   <tr>
+      <th class="text-right"> <span class="m-1"> Date: </span> </th>
+      <td> <span class="m-1"> @Model.Date?.ToString("MM-dd-yyyy") </span> </td>
+   </tr>
+
+   <tr>
+      <th class="text-right"> <span class="m-1"> Peak: </span> </th>
+      <td> <span class="m-1"> @Model.Trail.Peak.Name </span> </td>
+   </tr>
+
+   <tr>
+      <th class="text-right"> <span class="m-1"> Trail: </span> </th>
+      <td> <span class="m-1"> @Model.Trail.Name </span> </td>
+   </tr>
+
+   <tr>
+      <th class="text-right"> <span class="m-1"> Trail Condition: </span> </th>
+      <td> <span class="m-1"> @Model.TrailCondition </span> </td>
+   </tr>
+
+   <tr>
+      <th class="text-right"> <span class="m-1"> Weather: </span> </th>
+      <td> <span class="m-1"> @Model.Weather </span> </td>
+   </tr>
+
+   <tr>
+      <th class="text-right"> <span class="m-1"> Notes: </span> </th>
+      <td> <span class="m-1"> @Model.Notes </span> </td>
+   </tr>
+</tbody>

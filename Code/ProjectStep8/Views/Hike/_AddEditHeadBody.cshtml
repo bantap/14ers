@@ -1,0 +1,36 @@
+﻿@model Hike
+
+@if (ViewData.ModelState.ErrorCount > 0)
+{
+   <thead>
+      <tr> <td colspan="2"> <div asp-validation-summary="All"> </div> </td> </tr>
+      <tr> <td colspan="2"> <hr /> </td> </tr>
+   </thead>
+}
+
+<tbody>
+   <tr>
+      <th class="text-right"> <span class="m-1"> Trail: </span> </th>
+      <td> <partial name="_SelectTrail" model="@Model" /> </td>
+   </tr>
+
+   <tr>
+      <th class="text-right"> <span class="m-1"> Date: </span> </th>
+      <td> <input asp-for="Date" class="m-1" required value="@Model?.Date?.ToString("yyyy-MM-dd")" /> </td>
+   </tr>
+
+   <tr>
+      <th class="text-right"> <span class="m-1"> Trail Condition: </span> </th>
+      <td> <input asp-for="TrailCondition" class="m-1" placeholder="Trail Condition" /> </td>
+   </tr>
+
+   <tr>
+      <th class="text-right"> <span class="m-1"> Weather: </span> </th>
+      <td> <input asp-for="Weather" class="m-1" placeholder="Weather" /> </td>
+   </tr>
+
+   <tr>
+      <th class="text-right"> <span class="m-1"> Notes: </span> </th>
+      <td> <input asp-for="Notes" class="m-1" placeholder="Notes" /> </td>
+   </tr>
+</tbody>

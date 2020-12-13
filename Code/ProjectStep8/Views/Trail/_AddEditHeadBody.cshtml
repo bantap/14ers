@@ -1,0 +1,31 @@
+﻿@model Trail
+
+@if (ViewData.ModelState.ErrorCount > 0)
+{
+   <thead>
+      <tr> <td colspan="2"> <div asp-validation-summary="All"> </div> </td> </tr>
+      <tr> <td colspan="2"> <hr /> </td> </tr>
+   </thead>
+}
+
+<tbody>
+   <tr>
+      <th class="text-right"> <span class="m-1"> Peak: </span> </th>
+      <td> <span class="m-1"> @Model.Peak.Name </span> </td>
+   </tr>
+
+   <tr>
+      <th class="text-right"> <span class="m-1"> Trail Name: </span> </th>
+      <td> <input asp-for="Name" class="m-1" placeholder="Trail Name" /> </td>
+   </tr>
+
+   <tr>
+      <th class="text-right"> <span class="m-1"> Starting Elevation: </span> </th>
+      <td> <input asp-for="StartingElevation" class="m-1" placeholder="Trail Starting Elevation" /> </td>
+   </tr>
+
+   <tr>
+      <th class="text-right"> <span class="m-1"> Distance: </span> </th>
+      <td> <input asp-for="Distance" class="m-1" placeholder="Trail Distance" /> </td>
+   </tr>
+</tbody>

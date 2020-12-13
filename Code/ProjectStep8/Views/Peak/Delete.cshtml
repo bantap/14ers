@@ -4,27 +4,7 @@
    <legend> Delete Peak </legend>
 
    <table>
-      <tbody>
-         <tr>
-            <th class="text-right"> <span class="m-1"> Name: </span> </th>
-            <td> <span class="m-1"> @Model.Name </span> </td>
-         </tr>
-
-         <tr>
-            <th class="text-right"> <span class="m-1"> Elevation: </span> </th>
-            <td> <span class="m-1"> @Model.Elevation.ToString("N0") </span> </td>
-         </tr>
-
-         <tr>
-            <th class="text-right"> <span class="m-1"> County: </span> </th>
-            <td> <span class="m-1"> @Model.County </span> </td>
-         </tr>
-
-         <tr>
-            <th class="text-right"> <span class="m-1"> Nearest Town: </span> </th>
-            <td> <span class="m-1"> @Model.NearestTown </span> </td>
-         </tr>
-      </tbody>
+      <partial name="_DetailBody" model="@Model" />
 
       <tfoot>
          <tr> <td colspan="2"> <hr /> </td> </tr>

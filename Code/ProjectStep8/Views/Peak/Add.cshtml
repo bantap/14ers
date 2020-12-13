@@ -1,44 +1,11 @@
 ﻿@model Peak
 
-<fieldset class="border custom-control-inline p-2 shadow align-top mb-4">
+<fieldset class="border custom-control-inline p-2 shadow">
    <legend> Add A New Peak </legend>
 
    <form method="post">
       <table>
-         @if (ViewData.ModelState.ErrorCount > 0)
-         {
-            <thead>
-               <tr>
-                  <td colspan="2">
-                     <div asp-validation-summary="All"> </div>
-                  </td>
-               </tr>
-
-               <tr> <td colspan="2"> <hr /> </td> </tr>
-            </thead>
-         }
-
-         <tbody>
-            <tr>
-               <th class="text-right"> <span class="m-1"> Name: </span> </th>
-               <td> <input asp-for="Name" class="m-1" placeholder="Peak Name" required title="Peak Name" /> </td>
-            </tr>
-
-            <tr>
-               <th class="text-right"> <span class="m-1"> Elevation: </span> </th>
-               <td> <input asp-for="Elevation" class="m-1" placeholder="Peak Elevation" required title="Peak Elevation" /> </td>
-            </tr>
-
-            <tr>
-               <th class="text-right"> <span class="m-1"> County: </span> </th>
-               <td> <input asp-for="County" class="m-1" placeholder="County" title="County" /> </td>
-            </tr>
-
-            <tr>
-               <th class="text-right"> <span class="m-1"> Nearest Town: </span> </th>
-               <td> <input asp-for="NearestTown" class="m-1" placeholder="Nearest Town" title="Nearest Town" /> </td>
-            </tr>
-         </tbody>
+         <partial name="_AddEditHeadBody" model="@Model" />
 
          <tfoot>
             <tr> <td colspan="2"> <hr /> </td> </tr>
