@@ -12,6 +12,7 @@ namespace ProjectStep8.Models
       //   F i e l d s   &   P r o p e r t i e s
 
       private AppDbContext _context;
+      private SHA256       _passwordHasher = SHA256.Create();
       private ISession     _session;
 
       //   C o n s t r u c t o r s
@@ -36,7 +37,7 @@ namespace ProjectStep8.Models
       {
          try
          {
-            u.Password = encrypt(u.Password);
+            u.Password = encryptPassword(u.Email, u.Password);
             _context.Users.Add(u);
             _context.SaveChanges();
          }
@@ -75,7 +76,7 @@ namespace ProjectStep8.Models
             return false;
          }
 
-         u.Password = encrypt(u.Password);
+         u.Password = encryptPassword(u.Email, u.Password);
 
          if (dbUser.Password == u.Password)
          {
@@ -165,15 +166,15 @@ namespace ProjectStep8.Models
       }
 
 
-      private string encrypt(string password)
+      private string encryptPassword(string username, string password)
       {
-         SHA256 myHashingVar = SHA256.Create();
+         byte[] usernameByteArray = Encoding.ASCII.GetBytes(username.ToLower());
          byte[] passwordByteArray = Encoding.ASCII.GetBytes(password);
-         passwordByteArray[0] += 1;
-         passwordByteArray[1] += 2;
-         passwordByteArray[2] += 3;
-         passwordByteArray[3] += 4;
-         byte[] hashedPasswordByteArray = myHashingVar.ComputeHash(passwordByteArray);
+         for (int i = 0; i < passwordByteArray.Length; i++)
+         {
+            passwordByteArray[i] ^= usernameByteArray[i % usernameByteArray.Length];
+         }
+         byte[] hashedPasswordByteArray = _passwordHasher.ComputeHash(passwordByteArray);
          string hashedPassword = "";
          foreach (byte b in hashedPasswordByteArray)
          {

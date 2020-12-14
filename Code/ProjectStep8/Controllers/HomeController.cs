@@ -16,7 +16,7 @@ namespace ProjectStep8.Controllers
       public HomeController(IPeakRepository repository, IUserRepository userRepository)
       {
          _repository = repository;
-         userRepository.Login(new Models.User { Email = "PBanta101@GMail.Com", Password = "Wombat1" });
+         // userRepository.Login(new Models.User { Email = "PBanta101@GMail.Com", Password = "Wombat1" });
       }
 
       //   M e t h o d s

@@ -41,7 +41,7 @@ namespace ProjectStep8.Models
             {
                Id = 1,
                Email = "PBanta101@GMail.Com",
-               Password = "479ed019aea4c1769a39d5ed0e79b7ca943486e2d15b937b0ff1725b2aed09b3",
+               Password = "7cc8c0941294efb361568758f1dcf55a202f37c0df242a497540796aea813e7e",
                IsAdmin = true
             });
 
@@ -49,8 +49,17 @@ namespace ProjectStep8.Models
             (new User
             {
                Id = 2,
+               Email = "BantaP@Erau.Edu",
+               Password = "0197cf1c2fd540aa5414792dc7f41f48e1e1f6c8ea915b3543f8d5ddbb26b578",
+               IsAdmin = false
+            });
+
+         modelBuilder.Entity<User>().HasData
+            (new User
+            {
+               Id = 3,
                Email = "PBanta101@Example.Com",
-               Password = "479ed019aea4c1769a39d5ed0e79b7ca943486e2d15b937b0ff1725b2aed09b3",
+               Password = "7cc8c0941294efb361568758f1dcf55a202f37c0df242a497540796aea813e7e",
                IsAdmin = false
             });
 
