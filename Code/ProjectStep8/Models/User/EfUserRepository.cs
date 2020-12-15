@@ -12,7 +12,7 @@ namespace ProjectStep8.Models
       //   F i e l d s   &   P r o p e r t i e s
 
       private AppDbContext _context;
-      private SHA256       _passwordHasher = SHA256.Create();
+      private SHA256       _passwordHasher;
       private ISession     _session;
 
       //   C o n s t r u c t o r s
@@ -22,12 +22,6 @@ namespace ProjectStep8.Models
          _context = context;
          _session = foo.HttpContext.Session;
       }
-
-      // public EfUserRepository(AppDbContext context, HttpContext foo)
-      // {
-      //    _context = context;
-      //    _session = foo.Session;
-      // }
 
       //   M e t h o d s
 
@@ -67,7 +61,7 @@ namespace ProjectStep8.Models
          return _context.Users.Find(userId);
       }
 
-      public bool Login(User u) // email    password
+      public bool Login(User u)
       {
          User dbUser = GetUserByEmail(u.Email);
 
@@ -81,7 +75,7 @@ namespace ProjectStep8.Models
          if (dbUser.Password == u.Password)
          {
             _session.SetInt32("userId", dbUser.Id);
-            _session.SetString("userEmail", dbUser.Email);
+            _session.SetString("userEmail", u.Email);
             if (dbUser.IsAdmin == true)
             {
                _session.SetInt32("userAdmin", 1);
@@ -95,8 +89,6 @@ namespace ProjectStep8.Models
 
          return false;
       }
-
-      // VIM Rocks ! ! ! ! !
 
       public bool IsUserLoggedIn()
       {
@@ -120,7 +112,7 @@ namespace ProjectStep8.Models
          }
          else
          {
-            return userId.Value; // Value is an int
+            return userId.Value;
          }
       }
 
@@ -165,9 +157,15 @@ namespace ProjectStep8.Models
          _session.Remove("userAdmin");
       }
 
+      //   P r i v a t e   M e t h o d s
 
       private string encryptPassword(string username, string password)
       {
+         if (_passwordHasher == null)
+         {
+            _passwordHasher = SHA256.Create();
+         }
+
          byte[] usernameByteArray = Encoding.ASCII.GetBytes(username.ToLower());
          byte[] passwordByteArray = Encoding.ASCII.GetBytes(password);
          for (int i = 0; i < passwordByteArray.Length; i++)
